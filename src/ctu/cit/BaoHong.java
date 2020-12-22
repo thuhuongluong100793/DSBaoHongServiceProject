@@ -7,7 +7,9 @@ public class BaoHong {
 	
 	private String BH_MA;
 	private String SC_MA;
+	private String SC_TEN;
 	private String KH_MA;
+	private String KH_TEN;
 	private Date BH_NGAY;
 	private Time BH_GIO;
 	private String BH_NGUYENNHAN;
@@ -23,9 +25,17 @@ public class BaoHong {
 	{
 		return SC_MA;
 	}
+	public String getTenSuCo (String tenSuCo)
+	{
+		return SC_TEN;
+	}
 	public String getMaKhachHang (String maKhachHang)
 	{
 		return KH_MA;
+	}
+	public String getTenKhachHang (String tenKhachHang)
+	{
+		return KH_TEN;
 	}
 	public Date getNgay (String ngayBaoHong)
 	{
@@ -56,6 +66,14 @@ public class BaoHong {
 	public void setMaSuCo (String maSuCo)
 	{
 		this.SC_MA = maSuCo;
+	}
+	public void setTenSuCo (String tenSuCo)
+	{
+		this.SC_TEN = tenSuCo;
+	}
+	public void setTenKhachHang (String tenKhachHang)
+	{
+		this.KH_TEN = tenKhachHang;
 	}
 	public void setMaKhachHang (String maKhachHang)
 	{
