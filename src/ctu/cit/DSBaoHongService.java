@@ -18,16 +18,41 @@ import com.google.gson.Gson;
 public class DSBaoHongService {
 
 	@GET
-	@Path("/GetBaoHong")
+	@Path("/GetDSBaoHong")
 	@Produces("application/json")
-	public String baoHong()
+	public String GetDSBaoHong()	
 	{
 		String baoHong = null;
 		try
 		{
 			ArrayList<BaoHong> baoHongData = null;
 			ProjectManager projectManager= new ProjectManager();
-			baoHongData = projectManager.GetBaoHong();
+			baoHongData = projectManager.GetDSBaoHong();
+			Gson gson = new Gson();
+			System.out.println(gson.toJson(baoHongData));
+			baoHong = gson.toJson(baoHongData);
+		}
+		
+		catch (Exception e)
+		{
+			System.out.println(e); //Console 
+		}
+		return baoHong;
+		
+	}
+	
+	
+	@GET
+	@Path("/GetChiTietBaoHong/{maBaoHong}")
+	@Produces("application/json")
+	public String GetChiTietBaoHong(@PathParam("maBaoHong") String maBaoHong)	
+	{
+		String baoHong = null;
+		try
+		{
+			BaoHong baoHongData = null;
+			ProjectManager projectManager= new ProjectManager();
+			baoHongData = projectManager.GetChiTietBaoHong(maBaoHong);
 			Gson gson = new Gson();
 			System.out.println(gson.toJson(baoHongData));
 			baoHong = gson.toJson(baoHongData);
