@@ -41,6 +41,29 @@ public class DSBaoHongService {
 		
 	}
 	
+	@GET
+	@Path("/GetDSBaoHong/{keyWord}")
+	@Produces("application/json")
+	public String GetDSBaoHong(@PathParam("keyWord") String keyWord)	
+	{
+		String baoHong = null;
+		try
+		{
+			ArrayList<BaoHong> baoHongData = null;
+			ProjectManager projectManager= new ProjectManager();
+			baoHongData = projectManager.GetDSBaoHong(keyWord);
+			Gson gson = new Gson();
+			System.out.println(gson.toJson(baoHongData));
+			baoHong = gson.toJson(baoHongData);
+		}
+		
+		catch (Exception e)
+		{
+			System.out.println(e); //Console 
+		}
+		return baoHong;
+		
+	}
 	
 	@GET
 	@Path("/GetChiTietBaoHong/{maBaoHong}")

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 
 public class ProjectManager {
+	//BaoHong
 	public ArrayList<BaoHong> GetDSBaoHong()throws Exception {
 		ArrayList<BaoHong> baoHong = null;
 		try {
@@ -11,6 +12,19 @@ public class ProjectManager {
 			Connection connection = database.GetConnection();
 			Project project= new Project();
 			baoHong = project.GetDSBaoHong(connection);
+		}
+		catch (Exception e) {
+			throw e;
+		}
+		return baoHong;
+	}
+	public ArrayList<BaoHong> GetDSBaoHong(String keyWord)throws Exception {
+		ArrayList<BaoHong> baoHong = null;
+		try {
+			DbConnection database= new DbConnection();
+			Connection connection = database.GetConnection();
+			Project project= new Project();
+			baoHong = project.GetDSBaoHong(connection, keyWord);
 		}
 		catch (Exception e) {
 			throw e;
@@ -30,6 +44,7 @@ public class ProjectManager {
 		}
 		return baoHong;
 	}
+	//KhachHang
 	public ArrayList<KhachHang> GetDSKhachHang()throws Exception {
 		ArrayList<KhachHang> khachHang = null;
 		try {
@@ -43,6 +58,7 @@ public class ProjectManager {
 		}
 		return khachHang;
 	}
+	//SuCo
 	public ArrayList<SuCo> GetDSSuCo()throws Exception {
 		ArrayList<SuCo> suCo = null;
 		try {
