@@ -53,7 +53,8 @@ public class Project {
 				+ " WHERE A.KH_MA = B.KH_MA AND A.SC_MA = C.SC_MA " 
 				+ " AND (UPPER(KH_TEN) LIKE UPPER('%"+keyWord+"%') OR UPPER(BH_NGUYENNHAN) LIKE UPPER('%"+keyWord+"%') "
 				+ " OR UPPER(A.KH_MA) LIKE UPPER('%"+keyWord+"%') OR UPPER(SC_TEN) LIKE UPPER('%"+keyWord+"%') "
-				+ " OR UPPER(BH_XULY) LIKE UPPER('%"+keyWord+"%'))" 
+				+ " OR UPPER(BH_XULY) LIKE UPPER('%"+keyWord+"%') OR UPPER(BH_MA) LIKE UPPER('%"+keyWord+"%') " 
+				+ " OR UPPER(A.SC_MA) LIKE UPPER('%"+keyWord+"%'))"
 				+ " ORDER BY BH_MA DESC";
 		else sql = "SELECT BH_MA, A.SC_MA, SC_TEN, A.KH_MA, KH_TEN, BH_NGAY, BH_GIO, BH_NGUYENNHAN, BH_XULY, BH_TRANGTHAI"
 				+ " FROM BAOHONG A, KHACHHANG B,  SUCO C "
