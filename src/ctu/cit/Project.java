@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 public class Project {
 	//BaoHong
+	//The hien DS Bao hong
 	public ArrayList<BaoHong> GetDSBaoHong(Connection connection) throws Exception
 	{
 		ArrayList<BaoHong> baoHongData = new ArrayList<BaoHong>();
@@ -47,6 +48,7 @@ public class Project {
 			throw e;
 		}
 	}
+	// The hien DS Bao hong co kem keyword de loc dieu kien tim kiem
 	public ArrayList<BaoHong> GetDSBaoHong(Connection connection, String keyWord) throws Exception
 	{
 		ArrayList<BaoHong> baoHongData = new ArrayList<BaoHong>();
@@ -92,6 +94,8 @@ public class Project {
 			throw e;
 		}
 	}
+	
+	// The hien thong tin cua 1 Bao hong co ma cu the
 	public BaoHong GetChiTietBaoHong(Connection connection, String maBaoHong) throws Exception
 	{
 		BaoHong baoHongData = new BaoHong();
@@ -126,6 +130,8 @@ public class Project {
 			throw e;
 		}
 	}
+	
+	// Xoa bo 1 Bao hong co ma cu the
 	public int XoaBaoHong (Connection connection, String maBaoHong) throws Exception
 	{
 		String sql = "DELETE FROM BAOHONG WHERE BH_MA = '" +maBaoHong+ "'";
@@ -142,6 +148,8 @@ public class Project {
 		}
 		return result;
 	}
+	
+	// Sua Bao hong voi cac thong tin dinh kem
 	public int SuaBaoHong (Connection connection, String maBaoHong, String maSuCo, String maKhachHang, 
 			Date ngay, Time gio, String nguyenNhan, String xuLy, boolean trangThai) throws Exception
 	{
@@ -176,10 +184,12 @@ public class Project {
 		return result;
 	}
 	
+	// Them moi 1 Bao hong
+	
 	public int ThemBaoHong (Connection connection, String maSuCo, String maKhachHang, 
 			Date ngay, Time gio, String nguyenNhan, String xuLy, boolean trangThai) throws Exception
 	{
-		String sql = "INSERT INTO BAOHONG VALUES((SELECT MAX(BH_MA) + 1 FROM BAOHONG BH),?,?,?,?,?,?,?);";
+		String sql = "INSERT INTO BAOHONG VALUES((SELECT MAX(CONVERT(BH_MA, INT)) + 1 FROM BAOHONG BH),?,?,?,?,?,?,?);";
 		int result = 0;
 		try
 		{
@@ -208,6 +218,7 @@ public class Project {
 	}
 	
 	//KhachHang
+	// The hien DS Khach hang
 	
 	public ArrayList<KhachHang> GetDSKhachHang(Connection connection) throws Exception
 	{
@@ -237,6 +248,7 @@ public class Project {
 		}
 	}
 	//SuCo
+	// The hien DS Su co
 	public ArrayList<SuCo> GetDSSuCo(Connection connection) throws Exception
 	{
 		ArrayList<SuCo> suCoData = new ArrayList<SuCo>();
@@ -262,7 +274,6 @@ public class Project {
 			throw e;
 		}
 	}
-	
 	
 
 }

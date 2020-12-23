@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class ProjectManager {
 	//BaoHong
+	//The hien DS Bao hong
 	public ArrayList<BaoHong> GetDSBaoHong()throws Exception {
 		ArrayList<BaoHong> baoHong = null;
 		try {
@@ -20,6 +21,7 @@ public class ProjectManager {
 		}
 		return baoHong;
 	}
+	// The hien DS Bao hong co kem keyword de loc dieu kien tim kiem
 	public ArrayList<BaoHong> GetDSBaoHong(String keyWord)throws Exception {
 		ArrayList<BaoHong> baoHong = null;
 		try {
@@ -33,6 +35,7 @@ public class ProjectManager {
 		}
 		return baoHong;
 	}
+	// The hien thong tin cua 1 Bao hong co ma cu the
 	public BaoHong GetChiTietBaoHong(String maBaoHong)throws Exception {
 		BaoHong baoHong = null;
 		try {
@@ -46,6 +49,7 @@ public class ProjectManager {
 		}
 		return baoHong;
 	}
+	// Xoa bo 1 Bao hong co ma cu the
 	public int XoaBaoHong(String maBaoHong)throws Exception {
 		int result = 0;
 		try {
@@ -59,6 +63,7 @@ public class ProjectManager {
 		}
 		return result;
 	}
+	// Sua Bao hong voi cac thong tin dinh kem
 	public int SuaBaoHong(String maBaoHong, String maSuCo, String maKhachHang, 
 			Date ngay, Time gio, String nguyenNhan, String xuLy, boolean trangThai) throws Exception {
 		int result = 0;
@@ -73,6 +78,7 @@ public class ProjectManager {
 		}
 		return result;
 	}
+	// Them moi 1 Bao hong
 	public int ThemBaoHong(String maSuCo, String maKhachHang, 
 			Date ngay, Time gio, String nguyenNhan, String xuLy, boolean trangThai) throws Exception {
 		int result = 0;
@@ -88,6 +94,7 @@ public class ProjectManager {
 		return result;
 	}
 	//KhachHang
+	// The hien DS Khach hang
 	public ArrayList<KhachHang> GetDSKhachHang()throws Exception {
 		ArrayList<KhachHang> khachHang = null;
 		try {
@@ -102,6 +109,7 @@ public class ProjectManager {
 		return khachHang;
 	}
 	//SuCo
+	// The hien DS Su co
 	public ArrayList<SuCo> GetDSSuCo()throws Exception {
 		ArrayList<SuCo> suCo = null;
 		try {
