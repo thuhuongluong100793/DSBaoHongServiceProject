@@ -126,7 +126,7 @@ public class DSBaoHongService {
 		return result_string;
 		
 	}
-	//: [^/]*?]
+	
 	@GET
 	@Path("/SuaBaoHong/{maBaoHong}/{maSuCo}/{maKhachHang}/{ngay}/{gio}/{nguyenNhan:.*?}/{xuLy:.*?}/{trangThai}")
 	@Produces("application/json")
@@ -168,5 +168,45 @@ public class DSBaoHongService {
 		return result_string;
 		
 	}
+	@GET
+	@Path("/ThemBaoHong/{maSuCo}/{maKhachHang}/{ngay}/{gio}/{nguyenNhan:.*?}/{xuLy:.*?}/{trangThai}")
+	@Produces("application/json")
+	public String  ThemBaoHong(@PathParam("maSuCo") String maSuCo, @PathParam("maKhachHang") String maKhachHang, 
+			@PathParam("ngay") Date ngay, @PathParam("gio") Time gio, @PathParam("nguyenNhan") String nguyenNhan, 
+			@PathParam("xuLy") String xuLy, @PathParam("trangThai") Boolean trangThai)	
+	{
+		int result = 0;
+		String resCode = "";
+		String resMessage = "";
+		String result_string = "";
+		try
+		{
+			ProjectManager projectManager= new ProjectManager();
+			result = projectManager.ThemBaoHong(maSuCo, maKhachHang, ngay, gio, nguyenNhan, xuLy, trangThai);
+			Gson gson = new Gson();
+			System.out.println(gson.toJson(result));
+			if (result >= 1) {
+				resCode = "1";
+				resMessage = "Thêm mới thành công!";
+			}
+			else if (result == 0)
+			{
+				resCode = "-1";
+				resMessage = "Không thể thêm mới thông tin này!";
+			}
+			
+			
+			result_string = "{ \"resCode\" : \""+ resCode +"\",  \"resMessage\" : \""+ resMessage +"\"  }";
+			System.out.println(gson.toJson(result_string));
+		}
+		
+		catch (Exception e)
+		{
+			System.out.println(e); //Console 
+		}
+		return result_string;
+		
+	}
 
 }
+

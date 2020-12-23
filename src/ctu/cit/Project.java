@@ -176,6 +176,36 @@ public class Project {
 		return result;
 	}
 	
+	public int ThemBaoHong (Connection connection, String maSuCo, String maKhachHang, 
+			Date ngay, Time gio, String nguyenNhan, String xuLy, boolean trangThai) throws Exception
+	{
+		String sql = "INSERT INTO BAOHONG VALUES((SELECT MAX(BH_MA) + 1 FROM BAOHONG BH),?,?,?,?,?,?,?);";
+		int result = 0;
+		try
+		{
+			if (!maSuCo.equals("") || !maKhachHang.equals("") || ngay != null || gio != null  )
+			{
+				PreparedStatement ps = connection.prepareStatement(sql);
+				
+				ps.setString(1, maSuCo);
+				ps.setString(2, maKhachHang);
+				ps.setDate(3, ngay);
+				ps.setTime(4, gio);
+				ps.setString(5, nguyenNhan);
+				ps.setString(6, xuLy);
+				ps.setBoolean(7, trangThai);
+				int rs = ps.executeUpdate();	
+				result = rs;
+				//return 1;
+			}
+			
+		}
+		catch(Exception e)
+		{
+			throw e;
+		}
+		return result;
+	}
 	
 	//KhachHang
 	
