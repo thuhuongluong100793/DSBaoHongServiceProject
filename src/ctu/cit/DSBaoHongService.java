@@ -126,9 +126,9 @@ public class DSBaoHongService {
 		return result_string;
 		
 	}
-	
+	//: [^/]*?]
 	@GET
-	@Path("/SuaBaoHong/{maBaoHong}/{maSuCo}/{maKhachHang}/{ngay}/{gio}/{nguyenNhan}/{xuLy}/{trangThai}")
+	@Path("/SuaBaoHong/{maBaoHong}/{maSuCo}/{maKhachHang}/{ngay}/{gio}/{nguyenNhan:.*?}/{xuLy:.*?}/{trangThai}")
 	@Produces("application/json")
 	public String  SuaBaoHong(@PathParam("maBaoHong") String maBaoHong, @PathParam("maSuCo") String maSuCo,
 			@PathParam("maKhachHang") String maKhachHang, @PathParam("ngay") Date ngay, 

@@ -151,8 +151,7 @@ public class Project {
 		int result = 0;
 		try
 		{
-			if (!maBaoHong.equals("") || !maSuCo.equals("") || !maKhachHang.equals("") || ngay != null
-					|| gio != null || !nguyenNhan.equals("") || !xuLy.equals("") )
+			if (!maBaoHong.equals("") || !maSuCo.equals("") || !maKhachHang.equals("") || ngay != null || gio != null  )
 			{
 				PreparedStatement ps = connection.prepareStatement(sql);
 				
