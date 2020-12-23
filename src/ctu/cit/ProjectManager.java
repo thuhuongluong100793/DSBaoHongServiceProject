@@ -79,14 +79,14 @@ public class ProjectManager {
 		return result;
 	}
 	// Them moi 1 Bao hong
-	public int ThemBaoHong(String maSuCo, String maKhachHang, 
+	public int ThemBaoHong(String maBaoHong, String maSuCo, String maKhachHang, 
 			Date ngay, Time gio, String nguyenNhan, String xuLy, boolean trangThai) throws Exception {
 		int result = 0;
 		try {
 			DbConnection database= new DbConnection();
 			Connection connection = database.GetConnection();
 			Project project= new Project();
-			result = project.ThemBaoHong(connection, maSuCo, maKhachHang, ngay,  gio, nguyenNhan, xuLy, trangThai );
+			result = project.ThemBaoHong(connection, maBaoHong, maSuCo, maKhachHang, ngay,  gio, nguyenNhan, xuLy, trangThai );
 		}
 		catch (Exception e) {
 			throw e;
@@ -122,5 +122,21 @@ public class ProjectManager {
 			throw e;
 		}
 		return suCo;
+	}
+	
+	//TaiKhoan
+	// The hien Tai khoan
+	public TaiKhoan GetTaiKhoan(String tenDangNhap, String matKhau)throws Exception {
+		TaiKhoan taiKhoan = null;
+		try {
+			DbConnection database= new DbConnection();
+			Connection connection = database.GetConnection();
+			Project project= new Project();
+			taiKhoan = project.GetTaiKhoan(connection, tenDangNhap, matKhau);
+		}
+		catch (Exception e) {
+			throw e;
+		}
+		return taiKhoan;
 	}
 }

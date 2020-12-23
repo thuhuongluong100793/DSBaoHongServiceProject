@@ -186,24 +186,24 @@ public class Project {
 	
 	// Them moi 1 Bao hong
 	
-	public int ThemBaoHong (Connection connection, String maSuCo, String maKhachHang, 
+	public int ThemBaoHong (Connection connection, String maBaoHong, String maSuCo, String maKhachHang, 
 			Date ngay, Time gio, String nguyenNhan, String xuLy, boolean trangThai) throws Exception
 	{
-		String sql = "INSERT INTO BAOHONG VALUES((SELECT MAX(CONVERT(BH_MA, INT)) + 1 FROM BAOHONG BH),?,?,?,?,?,?,?);";
+		String sql = "INSERT INTO BAOHONG VALUES(?,?,?,?,?,?,?,?);";
 		int result = 0;
 		try
 		{
-			if (!maSuCo.equals("") || !maKhachHang.equals("") || ngay != null || gio != null  )
+			if (!maBaoHong.equals("") || !maSuCo.equals("") || !maKhachHang.equals("") || ngay != null || gio != null  )
 			{
 				PreparedStatement ps = connection.prepareStatement(sql);
-				
-				ps.setString(1, maSuCo);
-				ps.setString(2, maKhachHang);
-				ps.setDate(3, ngay);
-				ps.setTime(4, gio);
-				ps.setString(5, nguyenNhan);
-				ps.setString(6, xuLy);
-				ps.setBoolean(7, trangThai);
+				ps.setString(1, maBaoHong);
+				ps.setString(2, maSuCo);
+				ps.setString(3, maKhachHang);
+				ps.setDate(4, ngay);
+				ps.setTime(5, gio);
+				ps.setString(6, nguyenNhan);
+				ps.setString(7, xuLy);
+				ps.setBoolean(8, trangThai);
 				int rs = ps.executeUpdate();	
 				result = rs;
 				//return 1;
@@ -274,6 +274,37 @@ public class Project {
 			throw e;
 		}
 	}
+	
+	//Dang nhap
+	public TaiKhoan GetTaiKhoan(Connection connection, String tenDangNhap, String matKhau) throws Exception
+	{
+		TaiKhoan taiKhoanData = new TaiKhoan();
+		String sql = "SELECT TK_TENDANGNHAP, TK_MATKHAU, TK_LOAI FROM TAIKHOAN WHERE TK_TENDANGNHAP = ? AND MD5(TK_MATKHAU) = ? ";
+		
+		try
+		{
+			if(!tenDangNhap.contains("=") && !tenDangNhap.contains("\""))
+			{
+				PreparedStatement ps = connection.prepareStatement(sql);
+				ps.setString(1, tenDangNhap);
+				ps.setString(2, matKhau);
+				ResultSet rs = ps.executeQuery();			
+				while(rs.next())
+				{				
+					taiKhoanData.setTenDangNhap(rs.getString("TK_TENDANGNHAP"));
+					taiKhoanData.setMatKhau(rs.getString("TK_MATKHAU"));
+					taiKhoanData.setLoaiTaiKhoan(rs.getString("TK_LOAI"));
+				}
+			}
+			
+			return taiKhoanData;
+		}
+		catch(Exception e)
+		{
+			throw e;
+		}
+	}
+	
 	
 
 }

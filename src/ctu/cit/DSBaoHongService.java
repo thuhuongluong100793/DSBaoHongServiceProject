@@ -7,6 +7,7 @@ import java.sql.Time;
 import java.util.ArrayList;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -169,9 +170,9 @@ public class DSBaoHongService {
 		
 	}
 	@GET
-	@Path("/ThemBaoHong/{maSuCo}/{maKhachHang}/{ngay}/{gio}/{nguyenNhan:.*?}/{xuLy:.*?}/{trangThai}")
+	@Path("/ThemBaoHong/{maBaoHong}/{maSuCo}/{maKhachHang}/{ngay}/{gio}/{nguyenNhan:.*?}/{xuLy:.*?}/{trangThai}")
 	@Produces("application/json")
-	public String  ThemBaoHong(@PathParam("maSuCo") String maSuCo, @PathParam("maKhachHang") String maKhachHang, 
+	public String  ThemBaoHong(@PathParam("maBaoHong") String maBaoHong, @PathParam("maSuCo") String maSuCo, @PathParam("maKhachHang") String maKhachHang, 
 			@PathParam("ngay") Date ngay, @PathParam("gio") Time gio, @PathParam("nguyenNhan") String nguyenNhan, 
 			@PathParam("xuLy") String xuLy, @PathParam("trangThai") Boolean trangThai)	
 	{
@@ -182,7 +183,7 @@ public class DSBaoHongService {
 		try
 		{
 			ProjectManager projectManager= new ProjectManager();
-			result = projectManager.ThemBaoHong(maSuCo, maKhachHang, ngay, gio, nguyenNhan, xuLy, trangThai);
+			result = projectManager.ThemBaoHong(maBaoHong, maSuCo, maKhachHang, ngay, gio, nguyenNhan, xuLy, trangThai);
 			Gson gson = new Gson();
 			System.out.println(gson.toJson(result));
 			if (result >= 1) {
@@ -209,4 +210,3 @@ public class DSBaoHongService {
 	}
 
 }
-
