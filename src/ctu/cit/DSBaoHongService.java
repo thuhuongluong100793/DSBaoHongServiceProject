@@ -4,7 +4,6 @@ package ctu.cit;
 
 import java.util.ArrayList;
 
-
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -86,6 +85,44 @@ public class DSBaoHongService {
 			System.out.println(e); //Console 
 		}
 		return baoHong;
+	}
+	@GET
+	@Path("/XoaBaoHong/{maBaoHong}")
+	@Produces("application/json")
+	public String XoaBaoHong(@PathParam("maBaoHong") String maBaoHong)	
+	{
+		int result = 0;
+		String resCode = "";
+		String resMessage = "";
+		String result_string = "";
+		try
+		{
+			ProjectManager projectManager= new ProjectManager();
+			result = projectManager.XoaBaoHong(maBaoHong);
+			Gson gson = new Gson();
+			System.out.println(gson.toJson(result));
+			if (result >= 1) {
+				resCode = "1";
+				resMessage = "Xóa thành công!";
+			}
+			else if (result == 0)
+			{
+				resCode = "-1";
+				resMessage = "Không thể xóa thông tin này!";
+			}
+			
+			
+			result_string = "{ \"resCode\" : \""+ resCode +"\",  \"resMessage\" : \""+ resMessage +"\"  }";
+			//baoHong = gson.toJson(baoHongData);
+			System.out.println(gson.toJson(result_string));
+		}
+		
+		catch (Exception e)
+		{
+			System.out.println(e); //Console 
+		}
+		return result_string;
+		
 	}
 
 }

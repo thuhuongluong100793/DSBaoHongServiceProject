@@ -44,6 +44,19 @@ public class ProjectManager {
 		}
 		return baoHong;
 	}
+	public int XoaBaoHong(String maBaoHong)throws Exception {
+		int result = 0;
+		try {
+			DbConnection database= new DbConnection();
+			Connection connection = database.GetConnection();
+			Project project= new Project();
+			result = project.XoaBaoHong(connection, maBaoHong);
+		}
+		catch (Exception e) {
+			throw e;
+		}
+		return result;
+	}
 	//KhachHang
 	public ArrayList<KhachHang> GetDSKhachHang()throws Exception {
 		ArrayList<KhachHang> khachHang = null;

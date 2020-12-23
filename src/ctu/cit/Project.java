@@ -1,8 +1,11 @@
 package ctu.cit;
 import java.sql.Connection;
+import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+
+
 
 
 
@@ -121,6 +124,22 @@ public class Project {
 			throw e;
 		}
 	}
+	public int XoaBaoHong (Connection connection, String maBaoHong) throws Exception
+	{
+		String sql = "DELETE FROM BAOHONG WHERE BH_MA = '" +maBaoHong+ "'";
+		int result = 0;
+		try
+		{
+			Statement ps = connection.createStatement();
+			int rs = ps.executeUpdate(sql);	
+			result = rs;
+		}
+		catch(Exception e)
+		{
+			throw e;
+		}
+		return result;
+	}
 	//KhachHang
 	
 	public ArrayList<KhachHang> GetDSKhachHang(Connection connection) throws Exception
@@ -169,12 +188,14 @@ public class Project {
 				
 				suCoData.add(suCo);
 			}
-		return suCoData;
+			return suCoData;
 		}
 		catch(Exception e)
 		{
 			throw e;
 		}
 	}
+	
+	
 
 }
