@@ -279,7 +279,7 @@ public class Project {
 	public TaiKhoan GetTaiKhoan(Connection connection, String tenDangNhap, String matKhau) throws Exception
 	{
 		TaiKhoan taiKhoanData = new TaiKhoan();
-		String sql = "SELECT TK_TENDANGNHAP, TK_MATKHAU, TK_LOAI FROM TAIKHOAN WHERE TK_TENDANGNHAP = ? AND MD5(TK_MATKHAU) = ? ";
+		String sql = "SELECT TK_TENDANGNHAP, TK_MATKHAU, TK_LOAI FROM TAIKHOAN WHERE TK_TENDANGNHAP = ? AND TK_MATKHAU = MD5(?) ";
 		
 		try
 		{

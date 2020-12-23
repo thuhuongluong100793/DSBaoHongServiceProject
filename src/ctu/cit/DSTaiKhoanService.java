@@ -6,7 +6,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import com.google.gson.Gson;
-
+@Path("/WebService")
 public class DSTaiKhoanService {
 	@GET
 	@Path("/GetTaiKhoan/{tenDangNhap}/{matKhau}")
@@ -14,6 +14,9 @@ public class DSTaiKhoanService {
 	public String GetTaiKhoan(@PathParam("tenDangNhap") String tenDangNhap, @PathParam("matKhau") String matKhau)	
 	{
 		String taiKhoan = null;
+		String resCode = "";
+		String resMessage = "";
+		
 		try
 		{
 			TaiKhoan taiKhoanData = null;
@@ -22,6 +25,7 @@ public class DSTaiKhoanService {
 			Gson gson = new Gson();
 			System.out.println(gson.toJson(taiKhoanData));
 			taiKhoan = gson.toJson(taiKhoanData);
+			
 		}
 		
 		catch (Exception e)
