@@ -2,6 +2,8 @@ package ctu.cit;
 
 
 
+import java.sql.Date;
+import java.sql.Time;
 import java.util.ArrayList;
 
 import javax.ws.rs.GET;
@@ -114,6 +116,48 @@ public class DSBaoHongService {
 			
 			result_string = "{ \"resCode\" : \""+ resCode +"\",  \"resMessage\" : \""+ resMessage +"\"  }";
 			//baoHong = gson.toJson(baoHongData);
+			System.out.println(gson.toJson(result_string));
+		}
+		
+		catch (Exception e)
+		{
+			System.out.println(e); //Console 
+		}
+		return result_string;
+		
+	}
+	
+	@GET
+	@Path("/SuaBaoHong/{maBaoHong}/{maSuCo}/{maKhachHang}/{ngay}/{gio}/{nguyenNhan}/{xuLy}/{trangThai}")
+	@Produces("application/json")
+	public String  SuaBaoHong(@PathParam("maBaoHong") String maBaoHong, @PathParam("maSuCo") String maSuCo,
+			@PathParam("maKhachHang") String maKhachHang, @PathParam("ngay") Date ngay, 
+			@PathParam("gio") Time gio,
+			@PathParam("nguyenNhan") String nguyenNhan, @PathParam("xuLy") String xuLy,
+			@PathParam("trangThai") Boolean trangThai)	
+	{
+		int result = 0;
+		String resCode = "";
+		String resMessage = "";
+		String result_string = "";
+		try
+		{
+			ProjectManager projectManager= new ProjectManager();
+			result = projectManager.SuaBaoHong(maBaoHong, maSuCo, maKhachHang, ngay, gio, nguyenNhan, xuLy, trangThai);
+			Gson gson = new Gson();
+			System.out.println(gson.toJson(result));
+			if (result >= 1) {
+				resCode = "1";
+				resMessage = "Cập nhật thành công!";
+			}
+			else if (result == 0)
+			{
+				resCode = "-1";
+				resMessage = "Không thể cập nhật thông tin này!";
+			}
+			
+			
+			result_string = "{ \"resCode\" : \""+ resCode +"\",  \"resMessage\" : \""+ resMessage +"\"  }";
 			System.out.println(gson.toJson(result_string));
 		}
 		

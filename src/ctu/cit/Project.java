@@ -1,6 +1,8 @@
 package ctu.cit;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.Statement;
+import java.sql.Time;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -140,6 +142,42 @@ public class Project {
 		}
 		return result;
 	}
+	public int SuaBaoHong (Connection connection, String maBaoHong, String maSuCo, String maKhachHang, 
+			Date ngay, Time gio, String nguyenNhan, String xuLy, boolean trangThai) throws Exception
+	{
+		String sql = "UPDATE BAOHONG SET SC_MA = ?, KH_MA = ?, BH_NGAY = ?, BH_GIO = ?,"
+				+ "BH_NGUYENNHAN = ?, BH_XULY = ?, BH_TRANGTHAI = ?  WHERE BH_MA = ?;";
+				//+maBaoHong+ "'";
+		int result = 0;
+		try
+		{
+			if (!maBaoHong.equals("") || !maSuCo.equals("") || !maKhachHang.equals("") || ngay != null
+					|| gio != null || !nguyenNhan.equals("") || !xuLy.equals("") )
+			{
+				PreparedStatement ps = connection.prepareStatement(sql);
+				
+				ps.setString(1, maSuCo);
+				ps.setString(2, maKhachHang);
+				ps.setDate(3, ngay);
+				ps.setTime(4, gio);
+				ps.setString(5, nguyenNhan);
+				ps.setString(6, xuLy);
+				ps.setBoolean(7, trangThai);
+				ps.setString(8, maBaoHong);
+				int rs = ps.executeUpdate();	
+				result = rs;
+				//return 1;
+			}
+			
+		}
+		catch(Exception e)
+		{
+			throw e;
+		}
+		return result;
+	}
+	
+	
 	//KhachHang
 	
 	public ArrayList<KhachHang> GetDSKhachHang(Connection connection) throws Exception

@@ -1,5 +1,7 @@
 package ctu.cit;
 import java.sql.Connection;
+import java.sql.Date;
+import java.sql.Time;
 import java.util.ArrayList;
 
 
@@ -51,6 +53,20 @@ public class ProjectManager {
 			Connection connection = database.GetConnection();
 			Project project= new Project();
 			result = project.XoaBaoHong(connection, maBaoHong);
+		}
+		catch (Exception e) {
+			throw e;
+		}
+		return result;
+	}
+	public int SuaBaoHong(String maBaoHong, String maSuCo, String maKhachHang, 
+			Date ngay, Time gio, String nguyenNhan, String xuLy, boolean trangThai) throws Exception {
+		int result = 0;
+		try {
+			DbConnection database= new DbConnection();
+			Connection connection = database.GetConnection();
+			Project project= new Project();
+			result = project.SuaBaoHong(connection, maBaoHong, maSuCo, maKhachHang, ngay,  gio, nguyenNhan, xuLy, trangThai );
 		}
 		catch (Exception e) {
 			throw e;
