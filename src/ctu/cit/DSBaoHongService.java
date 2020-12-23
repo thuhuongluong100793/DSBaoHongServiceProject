@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -19,6 +20,7 @@ import com.google.gson.Gson;
 @Path("/WebService")
 public class DSBaoHongService {
 
+	
 	@GET
 	@Path("/GetDSBaoHong")
 	@Produces("application/json")
