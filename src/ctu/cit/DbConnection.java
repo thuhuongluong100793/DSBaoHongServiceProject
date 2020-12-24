@@ -13,10 +13,10 @@ public class DbConnection {
 	{
 		try
 		{
-			String connectionURL = "jdbc:mysql://localhost:3306/web";
+			String connectionURL = "jdbc:mysql://localhost:3306/qlkhdn";
 			Connection connection = null;
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-			connection = DriverManager.getConnection(connectionURL, "root", "");
+			connection = DriverManager.getConnection(connectionURL, "admin", "qlkhdn");
 		    return connection;
 		}
 		catch (SQLException e)
