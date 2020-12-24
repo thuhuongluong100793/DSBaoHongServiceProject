@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
 	http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" 
 	version="4.0">
-  <display-name>CalServiceRestProject</display-name>
+  <display-name>DSBaoHongServiceProject</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -24,9 +24,14 @@
   		</param-name>
   		<param-value>ctu.cit</param-value>
   	</init-param>
+  	
   </servlet>
   <servlet-mapping>
   	<servlet-name>RESTfulService-servlet</servlet-name>
   	<url-pattern>/rest/*</url-pattern>
   </servlet-mapping>
+  
+  
+  
+  
 </web-app>

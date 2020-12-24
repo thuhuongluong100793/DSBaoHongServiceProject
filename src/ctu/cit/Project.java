@@ -1,4 +1,5 @@
 package ctu.cit;
+import java.security.Principal;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.Statement;
@@ -6,6 +7,10 @@ import java.sql.Time;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Base64;
+
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.SecurityContext;
 
 
 
@@ -189,7 +194,9 @@ public class Project {
 	public int ThemBaoHong (Connection connection, String maBaoHong, String maSuCo, String maKhachHang, 
 			Date ngay, Time gio, String nguyenNhan, String xuLy, boolean trangThai) throws Exception
 	{
-		String sql = "INSERT INTO BAOHONG VALUES(?,?,?,?,?,?,?,?);";
+		//String sql = "INSERT INTO BAOHONG VALUES(?,?,?,?,?,?,?,?);";
+		String sql = "INSERT INTO BAOHONG SELECT ?,?,?,?,?,?,?,? FROM DUAL"
+				+ " WHERE NOT EXISTS (SELECT BH_MA FROM BAOHONG WHERE BH_MA= ?)";
 		int result = 0;
 		try
 		{
@@ -204,6 +211,7 @@ public class Project {
 				ps.setString(6, nguyenNhan);
 				ps.setString(7, xuLy);
 				ps.setBoolean(8, trangThai);
+				ps.setString(9, maBaoHong);
 				int rs = ps.executeUpdate();	
 				result = rs;
 				//return 1;
@@ -276,9 +284,15 @@ public class Project {
 	}
 	
 	//Dang nhap
-	public TaiKhoan GetTaiKhoan(Connection connection, String tenDangNhap, String matKhau) throws Exception
+	public TaiKhoan GetTaiKhoan(Connection connection, String authString) throws Exception
 	{
-		TaiKhoan taiKhoanData = new TaiKhoan();
+		TaiKhoan taiKhoanData = new TaiKhoan();		
+		
+		DecodeBase64 decode = new DecodeBase64();
+		String[] auth_splits = decode.DecodeBase64(authString);
+		String tenDangNhap = auth_splits[0];
+		String matKhau =  auth_splits[1];
+		
 		String sql = "SELECT TK_TENDANGNHAP, TK_MATKHAU, TK_LOAI FROM TAIKHOAN WHERE TK_TENDANGNHAP = ? AND TK_MATKHAU = MD5(?) ";
 		
 		try
@@ -303,7 +317,8 @@ public class Project {
 		{
 			throw e;
 		}
-	}
+	}	
+	
 	
 	
 

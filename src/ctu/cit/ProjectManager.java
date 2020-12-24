@@ -126,13 +126,13 @@ public class ProjectManager {
 	
 	//TaiKhoan
 	// The hien Tai khoan
-	public TaiKhoan GetTaiKhoan(String tenDangNhap, String matKhau)throws Exception {
+	public TaiKhoan GetTaiKhoan(String authString)throws Exception {
 		TaiKhoan taiKhoan = null;
 		try {
 			DbConnection database= new DbConnection();
 			Connection connection = database.GetConnection();
 			Project project= new Project();
-			taiKhoan = project.GetTaiKhoan(connection, tenDangNhap, matKhau);
+			taiKhoan = project.GetTaiKhoan(connection, authString);
 		}
 		catch (Exception e) {
 			throw e;

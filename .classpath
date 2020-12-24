@@ -22,11 +22,5 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/ltthu/Downloads/gson-2.6.2.jar"/>
 	<classpathentry kind="lib" path="E:/MyCode/SOA/apache-tomcat-9.0.41/lib/mysql-connector-java-8.0.22.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ltthu/Downloads/jar_files/jakarta.activation-2.0.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ltthu/Downloads/jar_files/jakarta.annotation-api-2.0.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ltthu/Downloads/jar_files/jakarta.inject-api-2.0.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ltthu/Downloads/jar_files/jakarta.ws.rs-api-3.0.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ltthu/Downloads/jar_files/jersey-common-3.0.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ltthu/Downloads/jar_files/osgi-resource-locator-1.0.3.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
