@@ -56,7 +56,7 @@ public class DSBaoHongService {
 			}
 			return baoHong;
 		} else
-			return "Error";
+			return "Ban khong co quyen";
 	}
 
 	@GET
@@ -83,7 +83,7 @@ public class DSBaoHongService {
 			}
 			return baoHong;
 		} else
-			return "Error";
+			return "Ban khong co quyen";
 	}
 
 	@GET
