@@ -31,14 +31,14 @@ public class ClientJersey {
                         10000));
  
         // (2) Create basic authentication
-        HttpAuthenticationFeature authDetails = HttpAuthenticationFeature.basic("ql001", "ql001");
+        HttpAuthenticationFeature authDetails = HttpAuthenticationFeature.basic("ql003", "ql003");
  
         // (3) Create jersey client with authentication
         Client client = ClientBuilder.newClient(clientConfig);
         client.register(authDetails);
  
         // (4) Call API
-        WebTarget target = client.target(API_URL).path("GetDSBaoHong");
+        WebTarget target = client.target(API_URL).path("GetDSSuCo");
         Invocation.Builder invocationBuilder = target.request(MediaType.APPLICATION_JSON_TYPE);
         final Response response = invocationBuilder.get();
  
